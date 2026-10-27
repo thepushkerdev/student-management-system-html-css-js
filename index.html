@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">STUDENT PORTAL</p>
+      <h1>Student Management System</h1>
+      <p class="subtitle">Add, search, update and manage student records.</p>
+    </div>
+    <div class="badge">BCA Project</div>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <article class="stat-card"><span>Total Students</span><strong id="totalStudents">0</strong></article>
+      <article class="stat-card"><span>Average Marks</span><strong id="averageMarks">—</strong></article>
+      <article class="stat-card"><span>Courses</span><strong id="totalCourses">0</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2 id="formTitle">Add Student</h2>
+          <p>Enter the student's details below.</p>
+        </div>
+      </div>
+      <form id="studentForm">
+        <input type="hidden" id="editId">
+        <div class="form-grid">
+          <label>Full Name
+            <input id="name" type="text" placeholder="e.g. Pushker Kumar" required maxlength="80">
+          </label>
+          <label>Roll Number
+            <input id="roll" type="text" placeholder="e.g. 2024244787" required maxlength="30">
+          </label>
+          <label>Course
+            <select id="course" required>
+              <option value="">Select course</option>
+              <option>BCA</option><option>BBA</option><option>BA</option>
+              <option>B.Com</option><option>B.Sc</option><option>MCA</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Marks (out of 100)
+            <input id="marks" type="number" min="0" max="100" step="0.01" placeholder="e.g. 78" required>
+          </label>
+          <label class="full-width">Email (optional)
+            <input id="email" type="email" placeholder="student@example.com" maxlength="100">
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="submitButton">Add Student</button>
+          <button class="button secondary hidden" type="button" id="cancelEdit">Cancel Edit</button>
+          <button class="button light" type="reset" id="clearForm">Clear Form</button>
+        </div>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-heading">
+        <div>
+          <h2>Student Records</h2>
+          <p>Search by student name, roll number or course.</p>
+        </div>
+        <input id="search" class="search" type="search" placeholder="Search students...">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Roll Number</th><th>Course</th><th>Marks</th><th>Percentage</th><th>Email</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="studentTable">
+            <tr><td colspan="7" class="empty">No student records yet. Add your first student above.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer"><span id="recordCount">0 records</span><button id="exportCsv" class="button secondary" type="button">Export CSV</button></div>
+    </section>
+    <p class="notice"><strong>Demo note:</strong> This project saves data in this browser's Local Storage. It is for learning/demo use only; do not enter confidential student information.</p>
+  </main>
+  <footer>Student Management System · BCA Internship Project</footer>
+  <script src="script.js"></script>
+</body>
+</html>
